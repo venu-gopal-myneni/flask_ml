@@ -1,5 +1,8 @@
+import os
+from dotenv import load_dotenv
 import requests
 from api.ml import ml_main
+import api.models
 
 def hi():
     out = requests.get("http://127.0.0.1:5000")
@@ -25,22 +28,29 @@ def add_model_eval(filename,eval,tenant_id):
 def print_all():
     pass    
 
+def get_env():
+    load_dotenv()
+    TENANT_NAME = os.getenv('TENANT_NAME')
+    TENANT_EMAIL = os.getenv('TENANT_EMAIL')
+
+    CSV_FILE_PATH = os.getenv('CSV_FILE_PATH')
+    Y_COLUMN = os.getenv('Y_COLUMN')
+
+    return TENANT_NAME,TENANT_EMAIL,CSV_FILE_PATH,Y_COLUMN
+
 if __name__ == "__main__":
+    TENANT_NAME,TENANT_EMAIL,CSV_FILE_PATH,Y_COLUMN = get_env()
     ## Add a tenant
-    tenantname = "a22sdgvdsgb1c"
-    email = "11sfadsgsafas"
-    out = add_tenant(tenantname,email)
+    out = add_tenant(TENANT_NAME,TENANT_EMAIL)
     ten_id = out["id"]
     print(out)
     
     ## run ml model
-    file_path=r"C:\Users\shenron\projects\flask_ml\csv_data\real_estate.csv"
-    target_column = 'Y house price of unit area'
-    eval = ml_main(file_path,target_column)
+    eval = ml_main(CSV_FILE_PATH,Y_COLUMN)
     print(eval)
 
     ## add metadata
-    out = add_model_eval(file_path,eval,ten_id)
+    out = add_model_eval(CSV_FILE_PATH,eval,ten_id)
     print(out)
     ## all tenants
 
