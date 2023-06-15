@@ -8,11 +8,11 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
 
-def read_csv(filename,target,split =0.3):
+def read_csv(file_path,target,split):
     """
         Read and split data
     """
-    file_path = str(Path(__file__).parent.parent.joinpath("csv_data",filename))
+    #file_path = str(Path(__file__).parent.parent.joinpath("csv_data",filename))
     df = pd.read_csv(file_path)
     X = df.drop(target,axis=1)
     Y = df[target]
@@ -38,10 +38,13 @@ def train_evaluate(X_train,X_test,y_train,y_test):
     print('mean_absolute_error : ', mean_absolute_error(y_test, predictions))
     return mse, mae
 
+def ml_main(file_path,target_column,split =0.3):
+    X_train,X_test,y_train,y_test=read_csv(file_path,target_column,split)
+    mse, mae = train_evaluate(X_train,X_test,y_train,y_test)
+    return f"MSE =  {round(mse,3)},  MAE = {round(mae,3)}"
+
 if __name__ == "__main__":
 
-    filename= "real_estate.csv"
-    target = 'Y house price of unit area'
-    split =0.3
-    X_train,X_test,y_train,y_test=read_csv(filename,target,split)
-    mse, mae=train_evaluate(X_train,X_test,y_train,y_test)
+    file_path= r"C:\Users\shenron\projects\flask_ml\csv_data\real_estate.csv"
+    target_column = 'Y house price of unit area'
+    mse, mae=train_evaluate(file_path,target_column)

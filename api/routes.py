@@ -18,7 +18,7 @@ def get_all_tenants():
 
 @app.route('/add_metadata',methods=['POST'])
 def add_metadata():
-    data_dict = request.get_json().__dict__
+    data_dict = dict(request.get_json())
     print(f"Metadata : {data_dict}")
     mt = Metadata(**data_dict)
     db.session.add(mt)
@@ -35,10 +35,10 @@ def add_tenant():
     db.session.add(te)
     db.session.flush()
     db.session.refresh(te)
-    print(te,te.id)
+    print(f"Tenant : {te}")
     db.session.commit()
 
-    return {'message': 'success'}
+    return {'message': 'success','id':te.id}
 
 # if __name__ == "__main__":
 #     with app.app_context():
