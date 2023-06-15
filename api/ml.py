@@ -12,7 +12,7 @@ def read_csv(filename,target,split =0.3):
     """
         Read and split data
     """
-    file_path = str(Path(__file__).parent.joinpath("data",filename))
+    file_path = str(Path(__file__).parent.parent.joinpath("csv_data",filename))
     df = pd.read_csv(file_path)
     X = df.drop(target,axis=1)
     Y = df[target]
