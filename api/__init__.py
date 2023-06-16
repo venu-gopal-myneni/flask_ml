@@ -13,7 +13,11 @@ def create_app(config_class=Config):
     app.config.from_object(Config)
 
     db.init_app(app)
-    from api import routes
+    from api.gets.routes import gets
+    from api.posts.routes import posts
+
+    app.register_blueprint(gets)
+    app.register_blueprint(posts)
 
 
     return app
