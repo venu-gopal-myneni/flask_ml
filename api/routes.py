@@ -4,7 +4,7 @@ from api import app,db
 from flask import request
 from api.utils import process_list
 
-@app.route("/home")
+@app.route("/")
 def hi_world():
     return "<p>Hello, World!</p>"
 
