@@ -1,4 +1,4 @@
-from api import db,app
+from api import db
 
 
 class Tenant(db.Model):
@@ -19,6 +19,3 @@ class Metadata(db.Model):
 
     def __repr__(self):
         return f"Metadata('{self.filename}', '{self.eval}', '{self.tenant_id}')"
-
-# with app.app_context():
-#     db.create_all()
