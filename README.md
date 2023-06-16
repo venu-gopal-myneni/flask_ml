@@ -8,7 +8,7 @@ Local SQLITE DB is being used and the package has an instance of it.
 * Install Python3.11 on your local system
 * Clone the repo to your local system
 * Open a 'cmd terminal' and navigate to FLASK_ML directory on the local repo
-* Create a virtual environment "pip -m venv venv"
+* Create a virtual environment "python -m venv venv"
 * Activate the virtual environment "venv\Scripts\activate"
 * Install requirements "pip install -r requirements.txt"
 * Run "pytest" to run test cases
