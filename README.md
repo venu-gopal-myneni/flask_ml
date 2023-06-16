@@ -11,6 +11,7 @@ Local SQLITE DB is being used and the package has an instance of it.
 * Create a virtual environment "pip -m venv venv"
 * Activate the virtual environment "venv\Scripts\activate"
 * Install requirements "pip install -r requirements.txt"
+* Run "pytest" to run test cases
 * Run "python run_app.py" to start flask app server
 * "http://127.0.0.1:5000/tenants" list of existing tenants
 * "http://127.0.0.1:5000/metadata"  list of existing metadata
