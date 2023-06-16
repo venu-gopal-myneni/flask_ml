@@ -38,3 +38,13 @@ def random_data():
 
     return {"name":name,"email":email,"csv_file":csv_file,"eval":eval,"id":id}
     
+
+@pytest.fixture()
+def filepath():
+    return "./csv_data/real_estate.csv"
+    
+
+
+@pytest.fixture()
+def target():
+    return 'Y house price of unit area'
