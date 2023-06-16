@@ -18,6 +18,11 @@ Local SQLITE DB is being used and the package has an instance of it.
 
 ## ENV file
 * Read the comments in the env file and set the variables accordingly OR you can use it as it is.
+* Either put your csv file in csv_data in which case you can set CSV_FILE_PATH variable as a relative path in "./csv_data/<filename>" format OR
+    you can give the full path
+* Full path example windows : 'C:\\Users\\shenron\\projects\\flask_ml\\csv_data\\real_estate.csv'
+* Full path example Linux : '/home/files/data/real_estate.csv'
+
 
 ## Client
 * Open a second terminal and navigate to FLASK_ML directory on the local repo

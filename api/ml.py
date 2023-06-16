@@ -40,9 +40,3 @@ def ml_main(file_path,target_column,split =0.3):
     X_train,X_test,y_train,y_test=read_csv(file_path,target_column,split)
     mse, mae = train_evaluate(X_train,X_test,y_train,y_test)
     return f"MSE =  {round(mse,3)},  MAE = {round(mae,3)}"
-
-if __name__ == "__main__":
-
-    file_path= r"C:\Users\shenron\projects\flask_ml\csv_data\real_estate.csv"
-    target_column = 'Y house price of unit area'
-    mse, mae=train_evaluate(file_path,target_column)

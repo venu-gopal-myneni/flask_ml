@@ -1,5 +1,5 @@
 
-def process_list(alist):
+def process_list(alist:list) -> str:
     data = ""
     for te in alist:
         data = f"{data},{str(te)}"
