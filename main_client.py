@@ -38,13 +38,16 @@ def get_env():
     CSV_FILE_PATH = os.getenv('CSV_FILE_PATH')
     Y_COLUMN = os.getenv('Y_COLUMN')
     DB_RECREATE = os.getenv('DB_RECREATE')
+    
 
     return TENANT_NAME,TENANT_EMAIL,CSV_FILE_PATH,Y_COLUMN,DB_RECREATE
 
 if __name__ == "__main__":
 
+    print("---------START-----------\n")
+
     TENANT_NAME,TENANT_EMAIL,CSV_FILE_PATH,Y_COLUMN,DB_RECREATE = get_env()
-    if DB_RECREATE:
+    if DB_RECREATE == "True":
         with app.app_context():
             db.drop_all()
             db.create_all()
@@ -52,23 +55,25 @@ if __name__ == "__main__":
     ## Add a tenant
     out = add_tenant(TENANT_NAME,TENANT_EMAIL)
     ten_id = out["id"]
-    print(out)
+    print(f"Tenant Added to Tenants : {out}")
     
     ## run ml model
     eval = ml_main(CSV_FILE_PATH,Y_COLUMN)
-    print(eval)
+    print(f"Model Evaluation Results : {eval}")
 
     ## add metadata
     out = add_model_eval(CSV_FILE_PATH,eval,ten_id)
-    print(out)
+    print(f"Model Added to Metadata : {out}")
 
     ## all tenants
     out = all_tenants()
-    print(out)
+    print(f"All Tenants : {out}")
 
     ## all metadata
     out = all_metadata()
-    print(out)
+    print(f"All Metadata : {out}")
+
+    print("-------END--------")
 
 
 
