@@ -2,8 +2,9 @@ import os
 from dotenv import load_dotenv
 import requests
 from api.ml import ml_main
-import api.models
-from api import app,db
+from api import create_app,db
+
+app = create_app()
 
 def hi():
     out = requests.get("http://127.0.0.1:5000")
