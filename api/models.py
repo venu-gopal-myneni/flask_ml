@@ -13,12 +13,12 @@ class Tenant(db.Model):
 
 class Metadata(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    filename = db.Column(db.String(100), nullable=False)
+    filename = db.Column(db.String(100), unique=False,nullable=False)
     eval = db.Column(db.String(100), unique=False,nullable=True)
     tenant_id = db.Column(db.Integer, db.ForeignKey('tenant.id'), nullable=False)
 
     def __repr__(self):
         return f"Metadata('{self.filename}', '{self.eval}', '{self.tenant_id}')"
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()

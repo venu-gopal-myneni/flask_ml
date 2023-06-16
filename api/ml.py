@@ -33,8 +33,8 @@ def train_evaluate(X_train,X_test,y_train,y_test):
     mae=mean_absolute_error(y_test, predictions)
 
     # model evaluation
-    print('mean_squared_error : ', mean_squared_error(y_test, predictions))
-    print('mean_absolute_error : ', mean_absolute_error(y_test, predictions))
+    #print('mean_squared_error : ', mean_squared_error(y_test, predictions))
+    #print('mean_absolute_error : ', mean_absolute_error(y_test, predictions))
     return mse, mae
 
 def ml_main(file_path,target_column,split =0.3):
