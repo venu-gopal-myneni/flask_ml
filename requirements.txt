@@ -1,6 +1,7 @@
 requests==2.31.0
 scikit-learn==1.2.2
 Flask==2.3.2
+Flask-SQLAlchemy==3.0.3
 pandas==2.0.2
 
 # dev
