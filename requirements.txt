@@ -3,6 +3,7 @@ scikit-learn==1.2.2
 Flask==2.3.2
 Flask-SQLAlchemy==3.0.3
 pandas==2.0.2
+python-dotenv==1.0.0
 
 # dev
 pytest==7.3.2
